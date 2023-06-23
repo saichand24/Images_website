@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Photography Website</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="hero">
+      <div class="slideshow">
+        <img src="03.jpg" alt="Featured Photo 1">
+        <img src="02.jpg" alt="Featured Photo 2">
+        <img src="03.jpg" alt="Featured Photo 3">
+      </div>
+    </section>
+
+<section class="portfolio">
+    <h2>Portfolio</h2>
+    
+    <div class="filter-buttons">
+      <button class="filter-button active" data-filter="all">All</button>
+      <button class="filter-button" data-filter="nature">Nature</button>
+      <button class="filter-button" data-filter="landscape">Landscape</button>
+      <button class="filter-button" data-filter="portrait">Portrait</button>
+    </div>
+    
+    <div class="image-gallery">
+      <div class="image-item nature">
+        <img src="01.jpg" alt="Nature Photo 1">
+      </div>
+      <div class="image-item landscape">
+        <img src="02.jpg" alt="Landscape Photo 1">
+      </div>
+      <div class="image-item portrait">
+        <img src="03.jpg" alt="Portrait Photo 1">
+      </div>
+    </div>
+  </section>
+<section class="photo-details">
+  <div class="photo-info">
+    <h3>Title</h3>
+    <p>Description</p>
+    <p>Location</p>
+  </div>
+  
+  <div class="photo-display">
+    <img src="01.jpg" alt="Photo 1">
+    <div class="overlay">
+      <div class="zoom-button"></div>
+      <div class="fullscreen-button"></div>
+      <div class="share-button"></div>
+    </div>
+  </div>
+</section>
+  <section class="galleries">
+    <div class="gallery">
+      <h3>Landscape Gallery</h3>
+      <div class="image-grid">
+        <div class="image-item">
+          <img src="02.jpg" alt="Landscape 1">
+        </div>
+        <div class="image-item">
+          <img src="04.jpg" alt="Landscape 2">
+        </div>
+      </div>
+    </div>
+    
+    <div class="gallery">
+      <h3>Portrait Gallery</h3>
+      <div class="image-grid">
+        <div class="image-item">
+          <img src="01.jpg" alt="Portrait 1">
+        </div>
+        <div class="image-item">
+          <img src="02.jpg" alt="Portrait 2">
+        </div>
+      </div>
+    </div>
+    
+  </section>
+<section class="slideshow">
+  <div class="slideshow-container">
+    <div class="slide">
+      <img src="01.jpg" alt="Slide 1">
+    </div>
+    <div class="slide">
+      <img src="02.jpg" alt="Slide 2">
+    </div>
+    <div class="slide">
+      <img src="03.jpg" alt="Slide 2">
+    </div>
+    <div class="slide">
+      <img src="04.jpg" alt="Slide 2">
+    </div>
+  </div>
+  
+  <div class="controls">
+    <button class="prev-button"></button>
+    <button class="next-button"></button>
+  </div>
+</section>
+
+  </main>
+  
+  <footer>
+  </footer>
+  
+  <script src="script.js"></script>
+  <script>
+    const slideshowContainer = document.querySelector('.slideshow-container');
+    const slides = document.querySelectorAll('.slide');
+    const prevButton = document.querySelector('.prev-button');
+    const nextButton = document.querySelector('.next-button');
+    
+    let currentIndex = 0;
+    
+    function showSlide(index) {
+      slideshowContainer.style.transform = `translateX(-${index * 100}%)`;
+    }
+    
+    function slideNext() {
+      currentIndex++;
+      if (currentIndex >= slides.length) {
+        currentIndex = 0;
+      }
+      showSlide(currentIndex);
+    }
+    
+    function slidePrev() {
+      currentIndex--;
+      if (currentIndex < 0) {
+        currentIndex = slides.length - 1;
+      }
+      showSlide(currentIndex);
+    }
+    
+    prevButton.addEventListener('click', slidePrev);
+    nextButton.addEventListener('click', slideNext);
+    
+    setInterval(slideNext, 5000); 
+  </script>
+  
+</body>
+</html>
